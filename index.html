@@ -257,7 +257,8 @@
                 </div>
             </div>
 
-            <button id="start-btn" class="main-btn">화면 켜고 테스트 시작하기 ✨</button>
+            <!-- HTML 태그에 직접 onclick 함수 명시 -->
+            <button class="main-btn" onclick="startTest()">화면 켜고 테스트 시작하기 ✨</button>
         </div>
 
         <!-- 퀴즈 화면 -->
@@ -285,7 +286,7 @@
                 <div class="result-badge" id="result-badge">특성 태그</div>
                 <div class="result-desc" id="result-desc">결과 설명</div>
             </div>
-            <button id="restart-btn" class="main-btn">내 하루 다시 확인하기 릴레이~ 💜</button>
+            <button class="main-btn" onclick="restartTest()">내 하루 다시 확인하기 릴레이~ 💜</button>
         </div>
     </div>
 
@@ -297,4 +298,82 @@
                 choices: [
                     { text: "스밍이 끊겼나?! 악, 기계적이 떴잖아!", type: "stream" },
                     { text: "투표~ 투표~ 투표~ 우리 플레이브 1위 만들어주자~", type: "vote" },
-                    { text: "최신 소식 업데이트! 휴, 내가 자는 사이 새로운 소식이 올라오진 않았군
+                    { text: "최신 소식 업데이트! 휴, 내가 자는 사이 새로운 소식이 올라오진 않았군!", type: "news" },
+                    { text: "일단 개운하게 알람 끄고 세수부터!", type: "chill" }
+                ]
+            },
+            {
+                step: "☀️ PM 12:30 - 활기찬 점심시간",
+                question: "점심 먹으면서 폰을 볼 때 나의 선택은?",
+                choices: [
+                    { text: "헉! 노아가 추천한 닭가슴살 샐러드 식단 인증샷 보기", type: "news" },
+                    { text: "은호픽! 짜장면~ 콤보로 고구마튀김까지 군침 흘리기", type: "chill" },
+                    { text: "예준이의 아아~ 수혈 인증글에 주접 댓글 달기", type: "stream" },
+                    { text: "봉구에게 앗아간 간장게장...?! 짤줍하기", type: "vote" }
+                ]
+            },
+            {
+                step: "🌆 PM 06:30 - 퇴근 및 하교 길",
+                question: "지친 발걸음으로 집에 가며 폰을 켤 때!",
+                choices: [
+                    { text: "음총팀 리스트 확인하면서 빠트린 거 없는지 체크! <추천!", type: "stream" },
+                    { text: "내 (다)계정 스밍이 잘 돌아가고 있나 슴췍슴췍~ 눈치 게임.", type: "stream" },
+                    { text: "투표 이제 본격적으로 할 거야!! 다들 날 말리지마!!", type: "vote" },
+                    { text: "헉, 공계에서 또 무슨 떡밥이 떴지?!! 트위터 새로고침 무한.", type: "news" }
+                ]
+            },
+            {
+                step: "🌙 PM 09:00 - 심쿵 밤타임",
+                question: "띠링! 갑작스레 켜진 위버스 라이브 알람!",
+                choices: [
+                    { text: "당장 이어폰 장착! 알람 울리자마자 0.1초 만에 입장!", type: "news" },
+                    { text: "이어폰.... 없어.... 위버스 소리만 끄고... 자막 보며 힐링하기....", type: "chill" },
+                    { text: "편한 장소에서 맛있는 야식까지 준비 완! 위버라와 함께 맛저~", type: "news" },
+                    { text: "쿨쿨... 잠자느라 못 봤어 ㅠㅠㅠ 왜 나는 항상 놓칠까 ㅠㅠㅠ", type: "vote" }
+                ]
+            },
+            {
+                step: "🌌 PM 11:30 - 하루를 마무리하며",
+                question: "잠들기 전 침대에 누워 마지막으로 하는 생각은?",
+                choices: [
+                    { text: "오늘 총 스밍 시간 몇 시간 찍었지? 내일 목표치 설정하기.", type: "stream" },
+                    { text: "내일 투표 일정 알람 맞춰두고 잠들기 전 스퍼트!", type: "vote" },
+                    { text: "오늘 라이브 복습하면서 덕메들이랑 주접 톡 나누기", type: "news" },
+                    { text: "오늘도 플레이브 덕분에 행복했다... 스르륵 취침", type: "chill" }
+                ]
+            }
+        ];
+
+        const results = [
+            {
+                type: "stream",
+                title: "🎵 [철저한 데이터 관리자] 음총팀 특채 인재형",
+                badge: "#음총의신 #기계적파괴자 #스밍장인",
+                desc: "당신은 플레이브의 음원 성적을 철저하게 책임지는 든든한 데이터 분석가 플리!\n\n눈 뜨자마자 스밍 상태를 점검하고, 일상 속에서도 슴췍이 생활화되어 있는 프로 덕후입니다. 플레이브가 음방 1위를 찍는 그날까지 당신의 플레이리스트는 단 1초도 쉬지 않아요. 플리의 영원한 든든한 버팀목!"
+            },
+            {
+                type: "vote",
+                title: "🏆 [투표는 나의 삶] 영혼의 1위 메이커형",
+                badge: "#투표머신 #우리애들1위는내가 #열정만렙",
+                desc: "하트와 투표권은 가득 쌓여있을 때 가장 마음이 편안해지는 타입!\n\n각종 앱을 돌며 투표하는 것이 하루 일과의 핵심이며, '우리 애들 1위 만들어주기'에 진심인 열정 만렙 플리입니다. 투표 독려 글을 보면 지나치지 못하고 손이 먼저 반응하는 행동파 덕후예요."
+            },
+            {
+                type: "news",
+                title: "📢 [실시간 앓이 중] 24시간 라방 대기조형",
+                badge: "#위버라산증인 #실시간주접러 #소통왕",
+                desc: "공계 알림 소리만 울려도 심장이 쿵 내려앉는 과몰입 만렙 플리!\n\n위버스 라이브가 켜지면 언제 어디서든 달려갈 준비가 되어 있으며, 멤버들의 사소한 말 한마디와 떡밥을 물고 덕메들과 밤새 수다 떨 수 있는 천생 소통왕입니다. 멤버들의 웃음 버튼이자 다정한 응원러예요."
+            },
+            {
+                type: "chill",
+                title: "🌿 [힐링 지향 플리] 뉴비 같은 고인물형",
+                badge: "#청량힐링 #덕질은즐겁게 #얼굴이복지",
+                desc: "플레이브의 음악과 청량한 비주얼 그 자체를 온전히 사랑하는 힐링 플리!\n\n스트레스받지 않고 나만의 속도로 즐겁게 덕질하며, 멤버들의 라이브와 예능을 보며 소소한 행복을 찾는 평화주의자입니다. 보고만 있어도 미소가 지어지는 청정 그 자체의 덕질 스타일이에요."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userScores = { stream: 0, vote: 0, news: 0, chill: 0 };
+
+        function startTest() {
+            const startScreen = document.getElementById("start-screen");
+            const quizScreen = document.getElementById("quiz-screen
